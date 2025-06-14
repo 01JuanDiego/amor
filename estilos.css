@@ -1,0 +1,696 @@
+
+
+/* Memory Card Styles */
+.memory-card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  perspective: 1200px; /* Mayor profundidad para un efecto 3D más impactante */
+  cursor: pointer;
+  margin: 20px;
+  transition: transform 0.3s ease-in-out; /* Agrega un efecto de movimiento al contenedor */
+}
+
+.memory-card:hover {
+  transform: scale(1.05); /* Agranda ligeramente la tarjeta al pasar el mouse */
+}
+
+.memory-card-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición más fluida */
+  transform-style: preserve-3d;
+}
+
+.memory-card:hover .memory-card-inner {
+  transform: rotateY(180deg);
+}
+.memory-card-front,
+.memory-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px; /* Bordes más suaves */
+  box-shadow: 0 8px 15px rgba(255, 109, 109, 0.2); /* Sombra más prominente */
+  padding: 20px;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease-in-out; /* Efecto suave en las sombras */
+}
+.memory-card-front {
+  background: linear-gradient(145deg, #fff3bf, #ffc1f5); /* Degradado sutil */
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.memory-card-back {
+  background: linear-gradient(
+    145deg,
+    #c4ffff,
+    #fffdfd
+  ); /* Diferente degradado para la cara trasera */
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+.memory-card:hover .memory-card-front,
+.memory-card:hover .memory-card-back {
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Aumenta la sombra al hacer hover */
+}
+
+.memory-card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra en el texto */
+}
+
+.memory-card p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.memory-card-front img,
+.memory-card-back img {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 10px; /* Bordes redondeados para las imágenes */
+  transition: transform 0.5s ease-in-out; /* Animación en las imágenes */
+}
+
+.memory-card:hover .memory-card-front img,
+.memory-card:hover .memory-card-back img {
+  transform: scale(1.1); /* Zoom en las imágenes al hacer hover */
+}
+
+/* General Styles for Navigation */
+.nav {
+  background: linear-gradient(90deg, #fdb4fd, #f8e63f); /* Degradado moderno */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  position: sticky; /* Navegación fija */
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  margin: 0 15px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #d0ffe3;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+/* Hover and Focus Effects */
+.nav-link:hover,
+.nav-link:focus {
+  color: #91c1ff; /* Color al pasar el mouse */
+  transform: scale(1.1); /* Agranda ligeramente el texto */
+}
+
+/* Active Link Indicator */
+.nav-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #ffbddc;
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  width: 100%; /* Subrayado animado */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-list li {
+    margin: 10px 0;
+  }
+
+  .nav {
+    padding: 20px;
+  }
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/media/fondo mimi.gif") !important; /* !important para asegurar que esta propiedad no sea sobrescrita */
+  background-size: cover !important; /* También aplicar !important aquí si necesitas garantizar el tamaño de la imagen */
+  background-position: center !important; /* Para asegurarte de que la imagen se centre */
+  opacity: 0.3 !important; /* Hacer la imagen semi-transparente, también con !important */
+  z-index: -1 !important; /* Asegura que quede detrás del contenido */
+}
+
+/* Content Styling */
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header-title,
+.header-subtitle {
+  display: block; /* Hace que los elementos se apilen verticalmente */
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5); /* Fondo oscuro para contraste */
+  color: #db6e6e;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px; /* Espaciado entre los elementos */
+  animation: textGlow 2s infinite alternate; /* Animación de texto */
+}
+
+/* Animación de fondo del texto */
+@keyframes textGlow {
+  0% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.header-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px; /* Espacio entre el título y el subtítulo */
+  animation-duration: 2s; /* Duración de la animación */
+}
+
+.header-subtitle {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 0;
+  animation-duration: 3s; /* Duración de la animación */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 36px;
+  }
+
+  .header-subtitle {
+    font-size: 16px;
+  }
+
+  .header {
+    padding: 40px 15px;
+  }
+}
+body {
+  background-color: #fde2e8 !important; /* Rosa pastel */
+}
+/* Timeline Styles */
+.timeline {
+  position: relative;
+  padding: 50px 0;
+  background-color: transparent;
+}
+
+.timeline-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #ffd1dc,
+    /* Rosa pastel */ #b0e0e6,
+    /* Azul pastel */ #fafad2 /* Amarillo pastel */
+  );
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 1;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+  border-left: 4px solid #ffb6c1;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  text-align: left;
+  border-right: 4px solid #87cefa;
+}
+
+.timeline-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-item h3 {
+  color: #ff69b4;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.timeline-item p {
+  color: #696969;
+  font-size: 14px;
+}
+
+.timeline-marker {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ff69b4;
+  top: 20px;
+  z-index: 2;
+}
+
+.timeline-item:nth-child(odd) .timeline-marker {
+  right: -10px;
+}
+
+.timeline-item:nth-child(even) .timeline-marker {
+  left: -10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    text-align: left !important;
+    margin-left: 40px;
+  }
+
+  .timeline-item:nth-child(even) {
+    left: 0 !important;
+  }
+
+  .timeline-marker {
+    left: -40px !important;
+    right: auto !important;
+  }
+}
+/* Estilos Reproductor de Música Casete */
+.music-player {
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.cassette-display {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: #ecf0f1;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.cassette-display::before {
+  content: "♫";
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+.cassette-display::after {
+  content: "♫";
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+#current-song {
+  font-weight: bold;
+  margin-top: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.control-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.control-btn:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.song-story {
+  background-color: #ecf0f1;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+.song-story h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+#song-description {
+  color: #7f8c8d;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Animaciones */
+@keyframes buttonPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.control-btn:active {
+  animation: buttonPulse 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .music-player {
+    width: 95%;
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}
+#musica {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.music-player {
+  width: 100%;
+  max-width: 500px; /* Ajusta el ancho máximo según prefieras */
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cassette-display {
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espacio entre botones */
+  margin-bottom: 20px;
+}
+
+.song-story {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.control-btn {
+  background-color: #bb95c7; /* Color fucsia */
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.control-btn:hover {
+  background-color: #77b2ff; /* Un tono más oscuro de fucsia */
+  transform: scale(1.05);
+}
+
+.poem-book {
+  background-color: #f9f5f0;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.poem-book-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.poem-book-title {
+  font-size: 2.5em;
+  color: #8b4513;
+  margin-bottom: 30px;
+  font-family: "Georgia", serif;
+}
+
+.poem-carousel {
+  position: relative;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+
+.poem-image-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.poem-image {
+  max-width: 60%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+.poem-selector {
+  display: none;
+}
+
+.poem-pages {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.poem-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s ease;
+}
+
+.poem-navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ddd;
+  border-radius: 50%;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-dot:hover {
+  background-color: #8b4513;
+}
+
+/* Lógica de selección de poemas con CSS puro */
+#poem1:checked ~ .poem-pages .poem-page:nth-child(1),
+#poem2:checked ~ .poem-pages .poem-page:nth-child(2),
+#poem3:checked ~ .poem-pages .poem-page:nth-child(3),
+#poem4:checked ~ .poem-pages .poem-page:nth-child(4),
+#poem5:checked ~ .poem-pages .poem-page:nth-child(5),
+#poem6:checked ~ .poem-pages .poem-page:nth-child(6),
+#poem7:checked ~ .poem-pages .poem-page:nth-child(7),
+#poem8:checked ~ .poem-pages .poem-page:nth-child(8),
+#poem9:checked ~ .poem-pages .poem-page:nth-child(9),
+#poem10:checked ~ .poem-pages .poem-page:nth-child(10),
+#poem11:checked ~ .poem-pages .poem-page:nth-child(11),
+#poem12:checked ~ .poem-pages .poem-page:nth-child(12),
+#poem13:checked ~ .poem-pages .poem-page:nth-child(13),
+#poem14:checked ~ .poem-pages .poem-page:nth-child(14),
+#poem15:checked ~ .poem-pages .poem-page:nth-child(15) {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#poem1:checked ~ .poem-navigation label:nth-child(1),
+#poem2:checked ~ .poem-navigation label:nth-child(2),
+#poem3:checked ~ .poem-navigation label:nth-child(3),
+#poem4:checked ~ .poem-navigation label:nth-child(4),
+#poem5:checked ~ .poem-navigation label:nth-child(5),
+#poem6:checked ~ .poem-navigation label:nth-child(6),
+#poem7:checked ~ .poem-navigation label:nth-child(7),
+#poem8:checked ~ .poem-navigation label:nth-child(8),
+#poem9:checked ~ .poem-navigation label:nth-child(9),
+#poem10:checked ~ .poem-navigation label:nth-child(10),
+#poem11:checked ~ .poem-navigation label:nth-child(11),
+#poem12:checked ~ .poem-navigation label:nth-child(12),
+#poem13:checked ~ .poem-navigation label:nth-child(13),
+#poem14:checked ~ .poem-navigation label:nth-child(14),
+#poem15:checked ~ .poem-navigation label:nth-child(15) {
+  background-color: #8b4513;
+}
+
+.poem-page h3 {
+  color: #8b4513;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.poem-page p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #333;
+  font-family: "Palatino Linotype", serif;
+}
+
+@media (max-width: 768px) {
+  .poem-book-container {
+    max-width: 95%;
+    padding: 0 10px;
+  }
+
+  .poem-page p {
+    font-size: 1em;
+  }
+
+  .poem-pages {
+    height: 300px;
+  }
+}
+.memory-wall {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 20px !important;
+  padding: 20px !important;
+  flex-wrap: wrap !important;
+}
+
+.memory-card {
+  flex: 0 1 300px !important;
+  max-width: 350px !important;
+}
+
+.memory-card-inner {
+  width: 100% !important;
+  height: 400px !important;
+}
+
+.memory-card img {
+  max-width: 100% !important;
+  max-height: 200px !important;
+  object-fit: cover !important;
+}

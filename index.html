@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link rel="stylesheet" type="text/css" href="estilos.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JD y Sarai ❤️</title>
+    
+    <style>
+      :root {
+        --primary-color: #ff4081;
+        --secondary-color: #f8bbd0;
+        --text-color: #333;
+        
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 100%;
+        padding: 15px;
+        margin: 0 auto;
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          max-width: 1200px;
+          padding: 20px;
+        }
+      }
+
+      /* Header con efecto parallax */
+      .header {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .header-content {
+        text-align: center;
+        color: white;
+        position: relative;
+        z-index: 1;
+      }
+
+
+      /* Sección de galería mejorada */
+      .gallery {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      @media (min-width: 768px) {
+        .gallery {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        aspect-ratio: 1;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+     
+      /* Sección de memoria */
+      .memory-wall {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px 0;
+      }
+
+      @media (min-width: 768px) {
+        .memory-wall {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Timeline de la relación */
+      .timeline {
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 100%;
+        background: var(--primary-color);
+      }
+
+      .timeline-item {
+        margin: 20px 0;
+        position: relative;
+        width: 50%;
+      }
+
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        padding-right: 40px;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 50%;
+        padding-left: 40px;
+      }
+
+      /* Sección de poemas con efecto libro */
+      .poem-book {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .poem-page {
+        background: #fff9c4;
+        padding: 20px;
+        margin: 10px 0;
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+      }
+
+      .poem-page:hover {
+        transform: rotateX(5deg);
+      }
+
+      /* Nuevas secciones */
+      .future-dreams {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+      }
+
+      .bucket-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        padding: 20px 0;
+      }
+
+      .bucket-item {
+        background: var(--secondary-color);
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      /* Sección de juegos */
+      .mini-games {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+      }
+
+      .memory-game {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .card {
+        aspect-ratio: 1;
+        background: var(--primary-color);
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* Animaciones */
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .floating {
+        animation: float 3s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <ul class="nav-list">
+        <li><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li><a href="#galeria" class="nav-link">Galería</a></li>
+        <li><a href="#musica" class="nav-link">Música</a></li>
+        <li><a href="#poemas" class="nav-link">Poemas</a></li>
+      </ul>
+    </nav>
+
+    <header id="inicio" class="header">
+      <div class="header-content">
+        <h1 class="header-title">Te amo cariño mío</h1>
+        <p class="header-subtitle">
+          Un pequeño regalo para mi esposita
+        </p>
+        <H2><a href="https://01juandiego.github.io/led/" target="_blank" rel="noopener noreferrer"> ❤️</a> </H2>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Sección de Galería -->
+      <section id="galeria" class="gallery">
+        <div class="gallery-item">
+          <a href="https://dibu-17.github.io/sarai.github.io/" target="_blank" rel="noopener noreferrer">
+            <img src=" /mimi1.png" alt="Nuestro momento 1" />
+          </a>
+        </div>
+        <div class="gallery-item">
+          <a href="https://01juandiego.github.io/jdysr/" target="_blank" rel="noopener noreferrer">
+            <img src=" /mimi3.jpg" alt="Nuestro momento 2" />
+          </a>
+        </div>
+        <div class="gallery-item">
+          <a href="https://01juandiego.github.io/aniversario/" target="_blank" rel="noopener noreferrer">
+            <img src=" /mimi2.png" alt="Nuestro momento 3" />
+          </a>
+        </div>
+      </section>
+
+      <!-- Reproductor de Música -->
+      <section id="musica" class="music-player">
+        <div class="cassette-display">
+            <h3>♫ Nuestra Playlist ♫</h3>
+            <p id="current-song">Reproduciendo: Canción</p>
+        </div>
+        
+        <div class="controls">
+            <button class="control-btn" onclick="previousSong()">
+                <span>⏮️</span> Anterior
+            </button>
+            <button class="control-btn" onclick="playSong()">
+                <span>▶️</span> Play
+            </button>
+            <button class="control-btn" onclick="nextSong()">
+                <span>⏭️</span> Siguiente
+            </button>
+        </div>
+        
+        <div class="song-story">
+            <h4>Significado de la Canción</h4>
+            <p id="song-description">Descripción de la canción...</p>
+        </div>
+        
+        
+        </div>
+    </section>
+    <section id="memorias" class="memory-wall">
+      <div class="memory-card">
+          <div class="memory-card-inner">
+              <div class="memory-card-front">
+                  <h3>Primera Noche Juntos</h3>
+                  <p>La primera vez que nos dimos cariño...</p>
+                  <img src="/gif mimi.gif" alt="GIF 1 frontal" />
+              </div>
+              <div class="memory-card-back">
+                  <p>
+                      Hoy ya hemos hecho el amor taaantas veces, sin embargo siguen siendo igual de especiales siempre. La primera vez te llené de muchos besos tu carita, y es algo que sigo haciendo hasta el día de hoy 😙 
+                  </p>
+                  <img src="/1.gif" alt="GIF 1 Trasero" />
+              </div>
+          </div>
+      </div>
+  
+      <div class="memory-card">
+          <div class="memory-card-inner">
+              <div class="memory-card-front">
+                  <h3>Primera Cita</h3>
+                  <p>Aquel día especial (demoré un poquito 🤭)...</p>
+                  <img src="/gif mimi 6.gif" alt="GIF 2 Frontal" />
+              </div>
+              <div class="memory-card-back">
+                  <p>
+                      Tardé un poco, estaba nervioso, y te encontré paradita en el centro de la plaza esperándome, tan bella. Quien diría que ese sería el comienzo de lo más hermoso que me pasó en la vida 🥰.
+                  </p>
+                  <img src="/2.gif" alt="GIF 2 Trasero" />
+              </div>
+          </div>
+      </div>
+  
+      <div class="memory-card">
+          <div class="memory-card-inner">
+              <div class="memory-card-front">
+                  <h3>Momentos Mágicos</h3>
+                  <p>Son bastantes... y cada vez más...</p>
+                  <img src="/gif mimi 7.gif" alt="GIF 3 Frontal" />
+              </div>
+              <div class="memory-card-back">
+                  <p>
+                      Juntos año nuevo, san valentín, cumpleaños, viajamos, fuimos al cine (a uno especial), nos bañamos juntos, cocinamos, jugamos, bailamos, estudiamos, chismeamos... etc 💕
+                  </p>
+                  <img src="/3.gif" alt="GIF 3 Trasero" />
+                  
+              </div>
+          </div>
+      </div>
+  </section>
+
+      <!-- Timeline -->
+      <section class="timeline">
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <h3>16 de Diciembre 2022</h3>
+                <p>Nuestra primera cita y primer beso.</p>
+                <span class="timeline-marker"></span>
+            </div>
+            <div class="timeline-item">
+                <h3>23 de Junio 2024</h3>
+                <p>Me pediste que fuéramos enamorados (ya teníamos mucho tiempo dándonos amor).</p>
+                <span class="timeline-marker"></span>
+            </div>
+            <div class="timeline-item">
+                <h3>15 de Septiembre 2024</h3>
+                <p>Te pedí que te cases conmigo y aceptaste.</p>
+                <span class="timeline-marker"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="poemas" class="poem-book">
+      <div class="poem-book-container">
+          <h2 class="poem-book-title">Poemas que me recuerdan a ti</h2>
+          
+          <div class="poem-carousel">
+              <input type="radio" name="poem-selector" id="poem1" checked class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem2" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem3" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem4" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem5" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem6" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem7" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem8" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem9" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem10" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem11" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem12" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem13" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem14" class="poem-selector">
+              <input type="radio" name="poem-selector" id="poem15" class="poem-selector">
+  
+              <div class="poem-navigation">
+                  <label for="poem1" class="nav-dot"></label>
+                  <label for="poem2" class="nav-dot"></label>
+                  <label for="poem3" class="nav-dot"></label>
+                  <label for="poem4" class="nav-dot"></label>
+                  <label for="poem5" class="nav-dot"></label>
+                  <label for="poem6" class="nav-dot"></label>
+                  <label for="poem7" class="nav-dot"></label>
+                  <label for="poem8" class="nav-dot"></label>
+                  <label for="poem9" class="nav-dot"></label>
+                  <label for="poem10" class="nav-dot"></label>
+                  <label for="poem11" class="nav-dot"></label>
+                  <label for="poem12" class="nav-dot"></label>
+                  <label for="poem13" class="nav-dot"></label>
+                  <label for="poem14" class="nav-dot"></label>
+                  <label for="poem15" class="nav-dot"></label>
+              </div>
+  
+              <div class="poem-pages">
+                  <div class="poem-page">
+                      <h3>"Rima LIII" - Gustavo Adolfo Bécquer</h3>
+                      <p>
+                        Volverán las oscuras golondrinas <br>
+                        En tu balcón sus nidos a colgar,<br>
+                        Y, nuevamente, a la tarde, aún más hermosas,<br>
+                        Volverán a amarte, el amor que fue.
+                      </p>
+                  </div>
+                  
+                  <div class="poem-page">
+                      <h3>Fragmento - Alejandra Pizarnik</h3>
+                      <p>
+                          Te amo como a otros no les es posible amarte,<br>
+                          con la libertad de no tenerte.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>Poema de Amor - Pablo Neruda</h3>
+                      <p>
+                          Yo te amo no sólo por como eres,<br>
+                          sino por lo que soy cuando estoy contigo.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>"Al oído"- Gabriela Mistral</h3>
+                      <p>
+                        Cual melodía que huele al mar,<br>
+                        las palabras caen en tu oido<br>
+                        mientras lo profundo explota,<br>
+                        eres mi latido.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>"Te quiero" - Mario Benedetti</h3>
+                      <p>
+                        Tus manos son mi caricia,<br>
+                        mis acordes cotidianos.<br>
+                        Te quiero porque tus manos<br>
+                        trabajan por la justicia.<br>
+                        Si te quiero es porque sos<br>
+                        mi amor, mi cómplice y todo.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>Elogio de la Amada - Octavio Paz</h3>
+                      <p>
+                          Cada día es un regalo,<br>
+                          cada momento contigo<br>
+                          es un verso que no termina.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>"Si tú me olvidas" - Pablo Neruda</h3>
+                      <p>
+                        Quiero que sepas
+                        una cosa.
+                        Tú sabes cómo es esto:<br>
+                        si miro
+                        la luna de cristal,
+                        la rama roja
+                        del lento otoño en mi ventana,<br>
+                        si toco
+                        junto al fuego<br>
+                        la impalpable ceniza
+                        o el arrugado cuerpo de la leña,<br>
+                        todo me lleva a ti,<br>
+                        como si todo lo que existe,<br>
+                        aromas, luz, metales,<br>
+                        fueran pequeños barcos que navegan<br>
+                        hacia esas islas tuyas que me aguardan.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>"Contigo" - Luis Cernuda</h3>
+                      <p>
+                        Si te llamo amor,<br>
+                        si te llamo vida,<br>
+                        es porque la vida y el amor son tuyos.<br>
+                        Yo no soy más que un árbol<br>
+                        que en tu aire respira.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>Amor en Silencio - Gabriela Mistral</h3>
+                      <p>
+                          Amor, amor, no me mires tanto.<br>
+                          No me mires tanto, que me deslumbras.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>Poema para mi Amor - Eduardo Galeano</h3>
+                      <p>
+                          Te amo con la ternura<br>
+                          de los pájaros que habitan<br>
+                          los espacios del viento.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>Infinito Amor - Roberto Juarroz</h3>
+                      <p>
+                          Nos amamos en un espacio<br>
+                          donde el tiempo no existe,<br>
+                          donde solo hay nosotros.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>Susurro - José Emilio Pacheco</h3>
+                      <p>
+                          En el silencio de tu nombre<br>
+                          encuentro todo mi universo.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>"Tu amor" - Alfonsina Storni</h3>
+                      <p>
+                        Tu amor,<br>
+                        el mágico aire que en las noches<br>
+                        me besa y me consuela,<br>
+                        tu amor,<br>
+                        sutil perfume que embriaga mi anhelo,<br>
+                        tu amor,<br>
+                        es estrella que ilumina mis cielos.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>"Rima XXI" - Gustavo Adolfo Bécquer</h3>
+                      <p>
+                        ¿Qué es poesía?, dices mientras clavas<br>
+                        en mi pupila tu pupila azul.<br>
+                        ¡Qué es poesía! ¿Y tú me lo preguntas?<br>
+                        Poesía... eres tú.
+                      </p>
+                  </div>
+  
+                  <div class="poem-page">
+                      <h3>"El cielo de tus ojos" - Miguel Hernández</h3>
+                      <p>
+                        En el cielo de tus ojos<br>
+                        hay estrellas que no mueren.<br>
+                        Amor mío, deja que su luz<br>
+                        bañe mi soledad infinita.
+                      </p>
+                  </div>
+              </div>
+
+              <div class="poem-image-container">
+                <a href="https://01juandiego.github.io/diamujer/" target="_blank" rel="noopener noreferrer">
+                  <img src="/final.gif" alt="Imagen romántica" class="poem-image">
+                </a>  
+              </div>
+
+          </div>
+
+          
+
+      </div>
+  </section>
+
+      <!-- Mini Juegos -->
+
+    
+
+    <script>
+      // Variables para el reproductor de música
+      let currentSongIndex = 0;
+      let isPlaying = false; // Controla si la canción está en reproducción o no
+
+      // Arreglo con canciones
+      const songs = [
+        {
+          title: "Spend It With You - Kodaline",
+          description:
+            "Esta canción (nuestro himno) demuestra que... Eres tan importante en mi vida que de tener un solo día en la tierra, sería contigo (with you) con quien buscaría pasarlo. SI PUDIERA ELEGIR, TE ELEGIRÍA POR SIEMPRE",
+          url: "/Spend It With You.mp3",
+        },
+        {
+          title: "Yo Te Amo - Chayanne",
+          description:
+            "Esta canción significa que... La confianza que tengo en nuestro amor ha logrado eliminar cualquier inseguridad que llegué a sentir en el pasado. Con esta canción te quiero expresar la entrega absoluta de mi amor por ti, que es INMENSO, SINCERO Y LEAL",
+          url: "/Yo Te Amo.mp3",
+        },
+        {
+          title: "You're Still The One - Shania Twain",
+          description:
+            "Esta canción representa... El amor duradero e inquebrantable que estamos teniendo, superamos juntos. Somos una pareja que ha logrado mantenerse unida a lo largo del tiempo, los vínculos que nos unen fueron haciéndose más fuerte y eso es admirable porque no todas las parejas pueden hacerlo. NUESTRO AMOR PUEDE CON TODO.",
+          url: "/You're Still The One.mp3",
+        },
+        {
+          title: "Tu Guardián - Victor Muñoz",
+          description:
+            "Esta canción significa que... Como un guardián en tu vida quiero cuidarte siempre, llenarte de amor verdadero, pasión, cariño y felicidad. CUIDO DE TI HASTA CUANDO ESTÁS DORMIDA.",
+          url: "/Tu Guardian.mp3",
+        },
+        {
+          title: "Tengo Tu Love - Sie7e",
+          description:
+            "Esta canción significa que... Nuestra conexión no depende de lo material, es importante el dinero no lo niego, pero el verdadero lujo es poder disfrutar de un amor verdadero. NUESTRA RELACIÓN ES AUTÉNTICA",
+          url: "/Tengo Tu Love.mp3",
+        },
+        {
+          title: "Just The Way You Are - Bruno Mars ",
+          description:
+            "Esta canción significa que... Amo todo de ti, cada parte de tu cuerpo es perfecto ante mis ojos y siempre serás la más bella de todas. ME ENCANTAS.",
+          url: "/Just The Way You Are.mp3",
+        },
+        {
+          title: "Inmortal - Aventura ",
+          description:
+            "Esta canción demuestra que... Yo te amo hasta el infinito y ningún otro hombre podrá igualar lo que siento por ti. ERES MI MUJER",
+          url: "/Inmortal.mp3",
+        },
+        {
+          title: "Te Quiero Mucho, Mucho - Río Roma",
+          description:
+            "Esta canción significa que... Desde un comienzo fui especial para ti, fue de las primeras canciones que me dedicaste. ME ENAMORASTE.",
+          url: "/Te Quiero Mucho, Mucho.mp3",
+        },
+        {
+          title: "Die With A Smile - Lady Gaga & Bruno Mars",
+          description:
+            "Esta canción me recuerda que... Todas las noches fueron de amor entre nosotros, no hay una sola noche donde no nos hayamos demostrado cariño, cuando llegue el día de partir de este mundo espero estar a tu lado, estaría feliz de todo lo que hemos logrado. SIEMPRE CONTIGO CARIÑO MÍO.",
+          url: "/Die With A Smile.mp3",
+        },
+        {
+          title: "Somos Parte De Un Nosotros - Tu esposo",
+          description:
+            "Esta canción es la más especial, cada letra es una parte de ti, cada palabra es un reflejo de lo que siento por ti y la canción completa es lo que somos nosotros como pareja. TE AMO INFINITAMENTE ❤️",
+          url: "/Somos Parte De Un Nosotros.mp3",
+        },
+      ];
+
+      let audio = new Audio(songs[currentSongIndex].url); // Inicializa el reproductor de audio
+
+      // Función para actualizar la información de la canción en la interfaz
+      function updateSong() {
+        document.getElementById(
+          "current-song"
+        ).textContent = `Reproduciendo: ${songs[currentSongIndex].title}`;
+        document.getElementById("song-description").textContent =
+          songs[currentSongIndex].description;
+        audio.src = songs[currentSongIndex].url; // Cambia la fuente del audio
+
+        // Restablecer el botón de Play
+        const playButton = document.querySelector(
+          ".control-btn[onclick='playSong()']"
+        );
+        playButton.textContent = "▶️ Play"; // Cambia el texto del botón a "Play"
+        isPlaying = false; // Actualiza el estado a pausado
+      }
+
+      // Función para ir a la siguiente canción
+      function nextSong() {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+        updateSong(); // Cambia de canción y actualiza la interfaz
+      }
+
+      // Función para ir a la canción anterior
+      function previousSong() {
+        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+        updateSong(); // Cambia de canción y actualiza la interfaz
+      }
+
+      // Función para reproducir o pausar la canción actual
+      function playSong() {
+        const playButton = document.querySelector(
+          ".control-btn[onclick='playSong()']"
+        );
+        if (isPlaying) {
+          audio.pause(); // Pausa la canción
+          playButton.textContent = "▶️ Play"; // Cambia el texto del botón a "Play"
+          isPlaying = false;
+        } else {
+          audio.play(); // Reproduce la canción
+          playButton.textContent = "⏸️ Pausa"; // Cambia el texto del botón a "Pausa"
+          isPlaying = true;
+        }
+      }
+
+      // Asegura que la canción se detenga al cambiar de canción
+      audio.addEventListener("ended", () => {
+        nextSong(); // Pasa automáticamente a la siguiente canción
+      });
+
+      // Inicialización: al cargar la página, se actualiza la interfaz
+      document.addEventListener("DOMContentLoaded", function () {
+        updateSong(); // Muestra la información inicial de la primera canción
+      });
+    </script>
+  </body>
+</html>
