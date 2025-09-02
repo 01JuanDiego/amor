@@ -168,7 +168,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("fondo mimi.gif") !important; /* !important para asegurar que esta propiedad no sea sobrescrita */
+  background-image: url("fondomimi.gif") !important; /* !important para asegurar que esta propiedad no sea sobrescrita */
   background-size: cover !important; /* También aplicar !important aquí si necesitas garantizar el tamaño de la imagen */
   background-position: center !important; /* Para asegurarte de que la imagen se centre */
   opacity: 0.3 !important; /* Hacer la imagen semi-transparente, también con !important */
